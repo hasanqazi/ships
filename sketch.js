@@ -42,7 +42,28 @@ function setup() {
   gui.addGlobals('shipChance');
   gui.addGlobals('debug');
 
-  if (windowWidth < 1000) {
+  if (windowWidth < 500) {
+    startFuel = 5;
+    startAsteroids = 3;
+    startShips = 4;
+    for (var i = 0; i < startShips; i++) {
+      var x = random(width);
+      var y = random(height);
+      spaceships[i] = new Spaceship(x, y);
+    }
+  
+    for (var i = 0; i < startFuel; i++) {
+      var x = random(width);
+      var y = random(height);
+      fuel.push(createVector(x,y));
+    }
+  
+    for (var i = 0; i < startAsteroids; i++) {
+      var x = random(width);
+      var y = random(height);
+      mines.push(createVector(x,y));
+    }
+  } else if (windowWidth < 1000) {
     startFuel = 20;
     startAsteroids = 10;
     startShips = 20;
