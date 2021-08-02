@@ -3,11 +3,11 @@ var fuel = [];
 var mines = [];
 
 var startFuel = 40;
-var startMeteors = 20;
+var startAsteroids = 20;
 var startShips = 50;
 
 var fuelChance = 0.1;
-var meteorChance = 0.01;
+var asteroidChance = 0.01;
 var shipChance = 0;
 var mutationRate = 0.01;
 
@@ -15,7 +15,7 @@ var debug = false;
 
 function preload() {
   healthPlus = loadImage('assets/icon_plusSmall.png');
-  meteor = loadImage('assets/meteor_detailedSmall.png');
+  asteroid = loadImage('assets/meteor_detailedSmall.png');
 
   ship0 = loadImage('assets/ship_G.png');
   ship1 = loadImage('assets/ship_F.png');
@@ -28,9 +28,6 @@ function preload() {
 }
 
 function setup() {
-  startFuel = 40;
-  startMeteors = 20;
-  startShips = 50;
 
   createCanvas(windowWidth, windowHeight);
 
@@ -38,7 +35,7 @@ function setup() {
   sliderRange(0, 1, 0.1);
   gui.addGlobals('fuelChance');
   sliderRange(0, 0.5, 0.01);
-  gui.addGlobals('meteorChance');
+  gui.addGlobals('asteroidChance');
   sliderRange(0, 0.1, 0.01);
   gui.addGlobals('mutationRate');
   sliderRange(0, 1, 0.1);
@@ -46,6 +43,9 @@ function setup() {
   gui.addGlobals('debug');
 
   if (windowWidth < 1000) {
+    startFuel = 20;
+    startAsteroids = 10;
+    startShips = 20;
     for (var i = 0; i < startShips; i++) {
       var x = random(width);
       var y = random(height);
@@ -58,14 +58,14 @@ function setup() {
       fuel.push(createVector(x,y));
     }
   
-    for (var i = 0; i < startMeteors; i++) {
+    for (var i = 0; i < startAsteroids; i++) {
       var x = random(width);
       var y = random(height);
       mines.push(createVector(x,y));
     }
   } else {
     startFuel = 200;
-    startMeteors = 100;
+    startAsteroids = 100;
     startShips = 100;
 
     for (var i = 0; i < startShips; i++) {
@@ -80,7 +80,7 @@ function setup() {
       fuel.push(createVector(x,y));
     }
   
-    for (var i = 0; i < startMeteors; i++) {
+    for (var i = 0; i < startAsteroids; i++) {
       var x = random(width);
       var y = random(height);
       mines.push(createVector(x,y));
@@ -102,7 +102,7 @@ function draw() {
     fuel.push(createVector(x,y));
   }
 
-  if (random(1) < meteorChance) {
+  if (random(1) < asteroidChance) {
     var x = random(width);
     var y = random(height);
     mines.push(createVector(x,y));
@@ -123,7 +123,7 @@ function draw() {
   for (var i = 0; i < mines.length; i++) {
     `fill(255, 0, 0);
     ellipse(mines[i].x, mines[i].y, 8, 8);`
-    image(meteor, mines[i].x-16, mines[i].y-16, 32, 32);
+    image(asteroid, mines[i].x-16, mines[i].y-16, 32, 32);
   }
 
   // Call the appropriate steering behaviors for our agents
