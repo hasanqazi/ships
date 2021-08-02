@@ -16,15 +16,7 @@ var debug = false;
 function preload() {
   healthPlus = loadImage('assets/icon_plusSmall.png');
   asteroid = loadImage('assets/meteor_detailedSmall.png');
-
-  ship0 = loadImage('assets/ship_G.png');
-  ship1 = loadImage('assets/ship_F.png');
-  ship2 = loadImage('assets/ship_H.png');
-  ship3 = loadImage('assets/ship_I.png');
-  ship4 = loadImage('assets/ship_J.png');
-  ship5 = loadImage('assets/ship_L.png');
-  ships = [ship0, ship1, ship2, ship3, ship4, ship5,];
-  ship = random(ships);
+  ship = loadImage('assets/ship_G.png');
 }
 
 function setup() {

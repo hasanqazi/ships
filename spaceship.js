@@ -7,8 +7,6 @@ class Spaceship {
     this.maxspeed = 3;
     this.maxforce = 0.5;
 
-    this.ship = random(ships);
-
     this.health = 1;
 
     this.dna = [];
@@ -147,7 +145,7 @@ class Spaceship {
     fill(col);
     stroke(col);
     strokeWeight(1);
-    image(this.ship, -16, -10, 32, 32);
+    image(ship, -16, -10, 32, 32);
     `beginShape();
     vertex(0, -this.r * 2);
     vertex(-this.r, this.r * 2);
